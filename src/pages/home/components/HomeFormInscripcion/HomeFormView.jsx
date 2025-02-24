@@ -30,12 +30,14 @@ const HomeFormView = ({ homeContactoRef }) => {
 
       {/* {isToggled ? <FormInscripcion /> : <FormContacto />} */}
       {/* Renderizar únicamente FormContacto */}
-      <h2 className="font-Poppins text-center text-5xl font-ExtraBold text-Black px-4 leading-snug mb-4">
-        {t("home_form_contacto_title")}
-      </h2>
-      <p className="text-xl text-Black font-Poppins font-Regular text-center mb-8 tablet:px-5 laptop2:text-2xl">
+      <div className="w-full tablet:w-3/4 mx-auto text-center">
+        <h2 className="font-Poppins text-center text-5xl font-ExtraBold text-Black px-4 leading-snug mb-4">
+          {t("home_form_contacto_title")}
+        </h2>
+        <p className="text-xl text-Black font-Poppins font-Regular text-center mb-8 tablet:px-5 laptop2:text-2xl">
           {t("home_form_contacto_paragraph")}
         </p>
+      </div>
       <FormContacto />
     </div>
   );
