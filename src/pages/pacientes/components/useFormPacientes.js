@@ -36,10 +36,11 @@ export const useFormPacientes = () => {
     try {
       const fetchData = {
         ...formData,
-        action: "contacto_pacientes",
+        action: "contacto",
         currentLanguage: currentLanguage,
       };
-      
+
+      // Fetch Gmail to send email
       const jsonResponse = await fetch(urlFetchAPI, {
         method: "POST",
         redirect: "follow",
@@ -52,20 +53,26 @@ export const useFormPacientes = () => {
       setFormData(initialFormData);
       setIsSubmitting(false);
 
-      const title = objectResponse.status
-        ? "Mensaje enviado exitosamente"
-        : "Error al enviar el mensaje, intente nuevamente más tarde";
       Swal.fire({
-        title: `${title}`,
+        title: objectResponse.status
+          ? "Mensaje enviado exitosamente"
+          : "Error al enviar el mensaje, intente nuevamente más tarde",
         background: "#FAFAFA",
         color: "#025951",
         iconColor: "#025951",
-        icon: "success",
+        icon: objectResponse.status ? "success" : "error",
         confirmButtonText: "Aceptar",
         confirmButtonColor: "#038C7F",
       });
     } catch (error) {
       console.error("Error:", error);
+      Swal.fire({
+        title: "Error inesperado",
+        text: "Hubo un problema al enviar el formulario. Inténtalo de nuevo.",
+        icon: "error",
+        confirmButtonText: "Aceptar",
+        confirmButtonColor: "#d33",
+      });
     }
   };
 

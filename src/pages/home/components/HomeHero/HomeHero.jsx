@@ -26,11 +26,11 @@ const HomeHero = ({ homeContactoRef }) => {
         <Zoom triggerOnce duration={1500}>
           <h1 className="w-full font-Poppins text-center font-Semibold text-5xl text-White leading-tight mb-8 tablet:leading-relaxed desktop:text-start laptop1:text-6xl laptop1:leading-[5rem]">
             {t("home_hero_title_1")}
-            <span className="bg-White text-Blue px-2 font-ExtraBold">
+            <span className="bg-White text-Blue px-4 font-ExtraBold">
               {t("home_hero_title_1_2")}
             </span>
             {t("home_hero_title_1_3")}
-            <span className="bg-White text-Blue px-2 font-ExtraBold">
+            <span className="bg-White text-Blue px-4 font-ExtraBold">
               {t("home_hero_title_1_4")}
             </span>
           </h1>
@@ -48,7 +48,7 @@ const HomeHero = ({ homeContactoRef }) => {
               onClick={handleScrollToHomeContact}
               className="text-center bg-White cursor-pointer text-Blue font-Poppins text-lg tablet:mt-10 tablet:text-xl laptop2:text-2xl font-Bold py-4 px-6 rounded-lg shadow-DarkBlue shadow-lg transition-transform duration-1000 ease-in-out hover:bg-Blue hover:text-White hover:scale-110"
             >
-              Solicitá más info
+              {t("home_hero_text_button")}
             </button>
           </div>
         </Fade>

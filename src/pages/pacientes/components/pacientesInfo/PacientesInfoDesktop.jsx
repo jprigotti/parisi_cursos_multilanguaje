@@ -1,14 +1,18 @@
+import { useTranslation } from "react-i18next";
 
 
 const PacientesInfoDesktop = () => {
+
+    const { t } = useTranslation("translation", { keyPrefix: "patients" })
+
     return (
         <section className="w-full py-16 px-8 bg-White text-center">
             <div className="w-3/4 mx-auto">
-                <h2 className="font-Poppins font-ExtraBold text-6xl inline text-White bg-Blue p-2">
-                    Implantes Cigomáticos
+                <h2 className="font-Poppins font-ExtraBold text-6xl inline text-Black p-2">
+                    {t("patients_info_title1")} <span className="text-White bg-Blue px-2 py-1">{t("patients_info_title2")}</span>
                 </h2>
                 <p className="font-Poppins text-3xl font-ExtraBold text-Black text-right my-6">
-                    La solución ideal para tu salud dental
+                {t("patients_info_paragraph")}
                 </p>
             </div>
             <div className="flex justify-between items-center">

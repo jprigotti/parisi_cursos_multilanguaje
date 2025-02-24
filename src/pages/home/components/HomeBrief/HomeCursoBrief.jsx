@@ -18,8 +18,7 @@ const HomeCursoBrief = () => {
       <p className="font-Poppins font-Bold text-Black text-2xl mb-4">{t('home_brief_title_3')}</p>
       <div className="flex items-start justify-center">
         <p className="font-Poppins text-Black font-Regular text-start text-xl tablet:text-center laptop2:text-2xl px-10">
-          {t('home_brief_text')}
-          {/* {t(item.label)} */}
+          {t('home_brief_paragraph')}
         </p>
       </div>
     </div>
