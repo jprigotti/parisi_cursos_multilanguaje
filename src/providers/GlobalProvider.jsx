@@ -7,10 +7,17 @@ const GlobalProvider = ({ children }) => {
   const [desktopView, setDesktopView] = useState(window.innerWidth >= 1440);
 
   const directoresRef = useRef(null);
+  const homeContactoRef = useRef(null);
+
+  // const scrollToSection = (ref) => {
+  //   ref.current.scrollIntoView({ behavior: "smooth" });
+  // };
 
   const scrollToSection = (ref) => {
+  if (ref?.current) {
     ref.current.scrollIntoView({ behavior: "smooth" });
-  };
+  }
+};
 
   useEffect(() => {
     function handleResize() {
@@ -33,6 +40,7 @@ const GlobalProvider = ({ children }) => {
         mobileView,
         desktopView,
         directoresRef,
+        homeContactoRef,
         scrollToSection
       }}
     >

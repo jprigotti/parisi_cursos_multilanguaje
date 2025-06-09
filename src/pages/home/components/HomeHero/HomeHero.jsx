@@ -6,13 +6,13 @@ import HomeHeroSwiper from "./HomeHeroSwiper";
 
 const HomeHero = ({ homeContactoRef }) => {
   const { t } = useTranslation("translation", { keyPrefix: "home" });
-  const { mobileView, desktopView } = useGlobal();
+  const { mobileView, desktopView, scrollToSection } = useGlobal();
 
-  const handleScrollToHomeContact = () => {
-    if (homeContactoRef?.current) {
-      homeContactoRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // const handleScrollToHomeContact = () => {
+  //   if (homeContactoRef?.current) {
+  //     homeContactoRef.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
 
   return (
     <section className="relative w-full h-[600px] flex justify-center items-center">
@@ -45,7 +45,7 @@ const HomeHero = ({ homeContactoRef }) => {
         <Fade direction="up" delay={800} triggerOnce>
           <div className="w-full flex justify-center">
             <button
-              onClick={handleScrollToHomeContact}
+              onClick={() => scrollToSection(homeContactoRef)}
               className="text-center bg-White cursor-pointer text-Blue font-Poppins text-lg tablet:mt-10 tablet:text-xl laptop2:text-2xl font-Bold py-4 px-6 rounded-lg shadow-DarkBlue shadow-lg transition-transform duration-1000 ease-in-out hover:bg-Blue hover:text-White hover:scale-110"
             >
               {t("home_hero_text_button")}

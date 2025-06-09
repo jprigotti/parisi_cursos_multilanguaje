@@ -10,7 +10,7 @@ const HomeFormView = ({ homeContactoRef }) => {
 
   return (
     <div
-      className="w-full mx-auto flex flex-col items-center mt-60"
+      className="w-full mx-auto flex flex-col items-center mt-60 scroll-mt-32"
       ref={homeContactoRef}>
       {/* <div className="w-full tablet:w-3/4 laptop1:w-1/2 laptop2:w-1/3 m-auto py-2 flex flex-col items-center justify-center bg-DarkBlue">
         <p className="text-xl text-White pb-5">{isToggled ? "Quiero saber más" : "Quiero pre-inscribirme"}</p>

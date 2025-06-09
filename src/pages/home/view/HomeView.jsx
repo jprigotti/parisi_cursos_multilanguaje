@@ -46,7 +46,7 @@ const HomeView = () => {
         <HomeCursoObjetivo />
       </AnimatedSection>
 
-        <HomeCusoInfo />
+      <HomeCusoInfo />
 
       <AnimatedSection
         direction="left"
@@ -77,9 +77,9 @@ const HomeView = () => {
       </AnimatedSection>
 
 
-      {/* <SectionWrapper>
+      <SectionWrapper>
         <HomeCursoFechas />
-      </SectionWrapper> */}
+      </SectionWrapper>
 
       <AnimatedSection
         direction="left"
