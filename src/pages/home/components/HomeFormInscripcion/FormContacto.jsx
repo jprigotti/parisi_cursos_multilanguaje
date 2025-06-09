@@ -101,7 +101,7 @@ const FormContacto = () => {
           <button
             type="submit"
             // className="w-full bg-White text-Blue font-Poppins text-2xl font-SemiBold py-3 rounded-lg hover:bg-teal-700 transition duration-300 laptop1:w-1/2"
-            className="w-full laptop1:w-1/2 text-center bg-White cursor-pointer text-Blue font-Poppins text-lg tablet:mt-10 tablet:text-xl laptop2:text-2xl font-Bold py-4 px-6 mb-8 rounded-lg shadow-DarkBlue shadow-lg transition-all hover:bg-Blue hover:text-White"
+            className="w-full laptop1:w-1/2 text-center bg-White cursor-pointer text-Blue font-Poppins text-lg tablet:mt-10 tablet:text-xl laptop2:text-2xl font-Bold py-4 px-6 mb-8 rounded-lg shadow-DarkBlue shadow-lg  hover:scale-110 transition-transform duration-1000 ease-in-out"
 
             disabled={isSubmitting}
           >

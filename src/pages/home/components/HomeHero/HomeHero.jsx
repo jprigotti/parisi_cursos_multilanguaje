@@ -6,13 +6,13 @@ import HomeHeroSwiper from "./HomeHeroSwiper";
 
 const HomeHero = ({ homeContactoRef }) => {
   const { t } = useTranslation("translation", { keyPrefix: "home" });
-  const { mobileView, desktopView } = useGlobal();
+  const { mobileView, desktopView, scrollToSection } = useGlobal();
 
-  const handleScrollToHomeContact = () => {
-    if (homeContactoRef?.current) {
-      homeContactoRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  // const handleScrollToHomeContact = () => {
+  //   if (homeContactoRef?.current) {
+  //     homeContactoRef.current.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
 
   return (
     <section className="relative w-full h-[600px] flex justify-center items-center">
@@ -26,11 +26,11 @@ const HomeHero = ({ homeContactoRef }) => {
         <Zoom triggerOnce duration={1500}>
           <h1 className="w-full font-Poppins text-center font-Semibold text-5xl text-White leading-tight mb-8 tablet:leading-relaxed desktop:text-start laptop1:text-6xl laptop1:leading-[5rem]">
             {t("home_hero_title_1")}
-            <span className="bg-White text-Blue px-2 font-ExtraBold">
+            <span className="bg-White text-Blue px-4 font-ExtraBold">
               {t("home_hero_title_1_2")}
             </span>
             {t("home_hero_title_1_3")}
-            <span className="bg-White text-Blue px-2 font-ExtraBold">
+            <span className="bg-White text-Blue px-4 font-ExtraBold">
               {t("home_hero_title_1_4")}
             </span>
           </h1>
@@ -45,10 +45,10 @@ const HomeHero = ({ homeContactoRef }) => {
         <Fade direction="up" delay={800} triggerOnce>
           <div className="w-full flex justify-center">
             <button
-              onClick={handleScrollToHomeContact}
-              className="text-center bg-White cursor-pointer text-Blue font-Poppins text-lg tablet:mt-10 tablet:text-xl laptop2:text-2xl font-Bold py-4 px-6 rounded-lg shadow-DarkBlue shadow-lg transition-all hover:bg-Blue hover:text-White"
+              onClick={() => scrollToSection(homeContactoRef)}
+              className="text-center bg-White cursor-pointer text-Blue font-Poppins text-lg tablet:mt-10 tablet:text-xl laptop2:text-2xl font-Bold py-4 px-6 rounded-lg shadow-DarkBlue shadow-lg transition-transform duration-1000 ease-in-out hover:bg-Blue hover:text-White hover:scale-110"
             >
-              Solicitá más info
+              {t("home_hero_text_button")}
             </button>
           </div>
         </Fade>

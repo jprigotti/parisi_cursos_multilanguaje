@@ -1,47 +1,49 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from 'swiper/modules';
-
+import { useTranslation } from "react-i18next";
 import "swiper/css";
 import 'swiper/css/navigation';
 
-
 const PacientesTestimonios = () => {
-  
+  const { t } = useTranslation("translation", { keyPrefix: "patients" });
+
+  // Mapeo de testimonios desde la traducción
   const testimonios = [
     {
-      nombre: "Fernando",
-      opinion: "Los implantes cigomáticos cambiaron mi vida. Ahora puedo sonreír sin miedo y con confianza.",
+      nombre: t("patients_testimonials_card1_name"),
+      opinion: t("patients_testimonials_card1_opinion"),
       imagen: "/images/img_swiper_mobile.png",
     },
     {
-      nombre: "Graciela",
-      opinion: "Gracias al Dr. Parisi, recuperé mi confianza y la funcionalidad de mi boca en tiempo récord.",
+      nombre: t("patients_testimonials_card2_name"),
+      opinion: t("patients_testimonials_card2_opinion"),
       imagen: "/images/img2_swiper_mobile.png",
     },
     {
-      nombre: "Piri",
-      opinion: "Excelente atención y resultados increíbles. ¡Lo recomiendo totalmente a cualquier persona!",
+      nombre: t("patients_testimonials_card3_name"),
+      opinion: t("patients_testimonials_card3_opinion"),
       imagen: "/images/img3_swiper_mobile.png",
     },
   ];
 
   return (
     <section className="w-full px-6 mt-60">
-      {/* Título con estilo mejorado */}
+      {/* Título con traducción */}
       <h2 className="font-Poppins text-4xl font-ExtraBold text-Black text-center mb-8 leading-relaxed desktop:text-6xl">
-        Historias Reales <span className="bg-Blue text-White py-2">Sonrisas Reales ! </span>
+        {t("patients_testimonials_title1")}
+        <span className="bg-Blue text-White py-2"> {t("patients_testimonials_title2")}</span>
       </h2>
       <p className="text-lg font-Poppins text-center text-DarkCharcoal mb-12 desktop:text-xl">
-        Descubre cómo los implantes cigomáticos han cambiado la vida de nuestros pacientes.
+        {t("patients_testimonials_paragraph")}
       </p>
 
       {/* Swiper para testimonios */}
       <Swiper
-       modules={[Navigation]}
+        modules={[Navigation]}
         spaceBetween={30}
         slidesPerView={1}
         navigation
-        loop= {true}
+        loop={true}
         breakpoints={{
           1024: { slidesPerView: 2 },
           1440: { slidesPerView: 3 },
@@ -71,4 +73,3 @@ const PacientesTestimonios = () => {
 };
 
 export default PacientesTestimonios;
-

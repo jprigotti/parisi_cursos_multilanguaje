@@ -14,10 +14,13 @@ import SectionWrapper from "../../../components/sectionWrapper/SectionWrapper";
 import HomeFormView from "../components/HomeFormInscripcion/HomeFormView";
 import HomeCusoInfo from "../components/HomeCursoInfo";
 import AnimatedSection from "../../../components/animatedSection/AnimatedSection";
+import useScrollToTop from "../../../hooks/useScrollToTop";
 
 const HomeView = () => {
   const { t } = useTranslation("translation", { keyPrefix: "home" });
   const homeContactoRef = useRef(null);
+  useScrollToTop();
+
 
   return (
     <div>
@@ -43,7 +46,7 @@ const HomeView = () => {
         <HomeCursoObjetivo />
       </AnimatedSection>
 
-        <HomeCusoInfo />
+      <HomeCusoInfo />
 
       <AnimatedSection
         direction="left"
@@ -74,9 +77,9 @@ const HomeView = () => {
       </AnimatedSection>
 
 
-      {/* <SectionWrapper>
+      <SectionWrapper>
         <HomeCursoFechas />
-      </SectionWrapper> */}
+      </SectionWrapper>
 
       <AnimatedSection
         direction="left"

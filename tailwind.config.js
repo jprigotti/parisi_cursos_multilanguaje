@@ -9,7 +9,7 @@ export default {
       TealGreen_3: "#97C3C6",
       TealGreen_4: "#A3CDD2",
       Blue: "#3956dd",
-      Black: "#312f2b",
+      Black: "#000000",
       LightBlue: "#A1C9D9",
       DarkBlue: "#223A5E",
       White: "#FFF",

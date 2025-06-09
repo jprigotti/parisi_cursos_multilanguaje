@@ -23,7 +23,8 @@ const NavDesktop = () => {
       >
         {/* Contenedor del Logo y Títulos */}
         <div className="flex flex-col justify-center items-center text-White py-4">
-          {isPacientesPage ? (
+          <img src="/images/logos/white.png" alt="Logo Residencia" width={70} height={70} />
+          {/* {isPacientesPage ? (
             // 🔹 Solo muestra el logo si es la página de Pacientes
             <img src="/images/logos/white.png" alt="Logo Residencia" width={70} height={70} />
           ) : (
@@ -33,13 +34,12 @@ const NavDesktop = () => {
                 <h1 className="font-Poppins font-Semibold text-center text-2xl tablet:text-base tablet:text-start laptop2:text-2xl leading-relaxed">
                   {t("title")}
                 </h1>
-                {/* <img src="/images/logos/white.png" alt="Logo Residencia" width={30} height={30} /> */}
               </div>
               <h2 className="font-Poppins font-Regular text-center text-xl tablet:text-sm laptop2:text-xl">
                 {t("subtitle")}
               </h2>
             </>
-          )}
+          )} */}
         </div>
 
         {/* Navegación */}

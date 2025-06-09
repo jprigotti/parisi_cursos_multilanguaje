@@ -14,7 +14,7 @@ const PacientesContacto = ({ contactoRef }) => {
       ref={contactoRef}
     >
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="font-Poppins text-5xl font-ExtraBold text-Blue mb-6 desktop:text-6xl">
+        <h2 className="font-Poppins text-4xl font-ExtraBold text-Blue mb-6 desktop:text-6xl">
           {t("patients_formSection_contacto_title")}
         </h2>
         <p className="text-xl text-Black font-Poppins font-Regular mb-8">

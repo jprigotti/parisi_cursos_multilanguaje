@@ -18,11 +18,9 @@ const HomeCursoHighlights = () => {
     <div ref={ref} className="w-full flex flex-col m-auto tablet:w-3/4 mt-60">
       <div className="flex flex-col items-center text-center">
         <h2 className="font-Poppins text-center text-5xl font-ExtraBold text-Black px-4 leading-snug mb-4">
-          {t("home_highlights_title_1")}
+          {t("home_highlights_title")}
         </h2>
-
       </div>
-
       {/* Cuadrantes con métricas */}
       <div className="w-full mt-10 flex flex-wrap">
         {highlights.map((highlight) => (
