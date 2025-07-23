@@ -3,6 +3,7 @@ import TextInputComponent from "../../../../components/Form/TextInputComponent";
 import { useFormContacto } from "./useFormContacto";
 import { useTranslation } from "react-i18next";
 import countryList from "react-select-country-list";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const FormContacto = () => {
   const { formData, handleChange, handleSubmitContacto, isSubmitting } =
@@ -12,7 +13,16 @@ const FormContacto = () => {
 
   // Obtener la lista de países
   const countryOptions = countryList().getData();
-  
+
+  // Configuración de reCAPTCHA
+  const [captchaToken, setCaptchaToken] = useState(null);
+  const siteKey = "6LdxOo0rAAAAAECEMwDHLskRpkwU_KH-_iWt-6vW";
+
+  const handleCaptchaChange = (token) => {
+    setCaptchaToken(token);
+  };
+
+
 
   return (
     <div className="w-full tablet:w-3/4 laptop1:w-1/2 laptop2:w-1/3 mx-auto rounded-lg bg-Blue shadow-lg p-6 laptop1:p-8 mb-20">
@@ -20,7 +30,7 @@ const FormContacto = () => {
         {t("home_form_contacto_title")}
       </h2> */}
       <form
-        onSubmit={handleSubmitContacto}
+        onSubmit={(e) => handleSubmitContacto(e, captchaToken)}
         className="space-y-4"
         disabled={isSubmitting}
       >
@@ -60,7 +70,7 @@ const FormContacto = () => {
             id="pais"
             name="pais"
             value={formData.pais}
-            onChange={handleChange} 
+            onChange={handleChange}
             required
             className="w-full p-3 font-Poppins text-xl text-Black font-Regular rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-600"
           >
@@ -109,6 +119,12 @@ const FormContacto = () => {
               ? t("home_form_contacto_sending")
               : t("home_form_contacto_send")}
           </button>
+        </div>
+        <div className="flex justify-center">
+          <ReCAPTCHA
+            sitekey={siteKey}
+            onChange={handleCaptchaChange}
+          />
         </div>
       </form>
     </div>

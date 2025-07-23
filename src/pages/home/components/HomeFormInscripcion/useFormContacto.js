@@ -32,47 +32,99 @@ export const useFormContacto = () => {
     });
   };
 
-  const handleSubmitContacto = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+const handleSubmitContacto = async (e, captchaToken) => {
+  e.preventDefault();
 
-    try {
-      const fetchData = {
-        ...formData,
-        action: "contacto",
-        currentLanguage: currentLanguage,
-      };
-      // Fetch Gmail to send email
-      const jsonResponse = await fetch(urlFetchAPI, {
-        method: "POST",
-        redirect: "follow",
-        dataType: "json",
-        accepts: "application/json",
-        body: JSON.stringify(fetchData),
-      });
+  if (!captchaToken) {
+    Swal.fire({
+      title: "Por favor completá el captcha antes de enviar.",
+      icon: "warning",
+      confirmButtonText: "Aceptar",
+    });
+    return;
+  }
 
-      // Handle the response from the Google Apps Script endpoint
-      const objectResponse = await jsonResponse.json();
-      console.log("Response is: ", objectResponse);
-      setFormData(initialFormData);
-      setIsSubmitting(false);
+  setIsSubmitting(true);
 
-      const title = objectResponse.status
+  try {
+    const fetchData = {
+      ...formData,
+      action: "contacto",
+      currentLanguage: currentLanguage,
+      recaptchaToken: captchaToken, // acá lo incluís en el payload
+    };
+
+    const jsonResponse = await fetch(urlFetchAPI, {
+      method: "POST",
+      redirect: "follow",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(fetchData),
+    });
+
+    const objectResponse = await jsonResponse.json();
+    console.log("Response is: ", objectResponse);
+
+    setFormData(initialFormData);
+    setIsSubmitting(false);
+
+    Swal.fire({
+      title: objectResponse.status
         ? "Mensaje enviado exitosamente"
-        : "Error al enviar el mensaje, intente nuevamente más tarde";
-      Swal.fire({
-        title: `${title}`,
-        background: "#FAFAFA",
-        color: "#025951",
-        iconColor: "#025951",
-        icon: "success",
-        confirmButtonText: "Aceptar",
-        confirmButtonColor: "#038C7F",
-      });
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+        : "Error al enviar el mensaje, intente nuevamente más tarde",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+    });
+
+  } catch (error) {
+    console.error("Error:", error);
+    setIsSubmitting(false);
+  }
+};
+
+
+  // const handleSubmitContacto = async (e) => {
+  //   e.preventDefault();
+  //   setIsSubmitting(true);
+
+  //   try {
+  //     const fetchData = {
+  //       ...formData,
+  //       action: "contacto",
+  //       currentLanguage: currentLanguage,
+  //     };
+  //     // Fetch Gmail to send email
+  //     const jsonResponse = await fetch(urlFetchAPI, {
+  //       method: "POST",
+  //       redirect: "follow",
+  //       dataType: "json",
+  //       accepts: "application/json",
+  //       body: JSON.stringify(fetchData),
+  //     });
+
+  //     // Handle the response from the Google Apps Script endpoint
+  //     const objectResponse = await jsonResponse.json();
+  //     console.log("Response is: ", objectResponse);
+  //     setFormData(initialFormData);
+  //     setIsSubmitting(false);
+
+  //     const title = objectResponse.status
+  //       ? "Mensaje enviado exitosamente"
+  //       : "Error al enviar el mensaje, intente nuevamente más tarde";
+  //     Swal.fire({
+  //       title: `${title}`,
+  //       background: "#FAFAFA",
+  //       color: "#025951",
+  //       iconColor: "#025951",
+  //       icon: "success",
+  //       confirmButtonText: "Aceptar",
+  //       confirmButtonColor: "#038C7F",
+  //     });
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
 
   return {
     formData,
