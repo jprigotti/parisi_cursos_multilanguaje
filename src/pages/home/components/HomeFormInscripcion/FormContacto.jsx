@@ -1,14 +1,18 @@
 import React, { useState } from "react";
+import { useRef } from "react";
 import TextInputComponent from "../../../../components/Form/TextInputComponent";
 import { useFormContacto } from "./useFormContacto";
 import { useTranslation } from "react-i18next";
 import countryList from "react-select-country-list";
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 const FormContacto = () => {
-  const { formData, handleChange, handleSubmitContacto, isSubmitting } =
+  const { formData, handleChange, handleSubmitContacto, isSubmitting, setRecaptchaToken } =
     useFormContacto();
 
   const { t } = useTranslation("translation", { keyPrefix: "home" });
+  const recaptchaRef = useRef();
 
   // Obtener la lista de países
   const countryOptions = countryList().getData();
@@ -19,7 +23,7 @@ const FormContacto = () => {
         {t("home_form_contacto_title")}
       </h2> */}
       <form
-        onSubmit={handleSubmitContacto}
+        onSubmit={(e) => handleSubmitContacto(e, recaptchaRef)}
         className="space-y-4"
         disabled={isSubmitting}
       >
@@ -96,11 +100,19 @@ const FormContacto = () => {
           ></textarea>
         </div>
 
-        <div className="laptop1:flex laptop1:justify-center">
+        <div className="flex flex-col items-center">
+          <div>
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey="6LdxOo0rAAAAAECEMwDHLskRpkwU_KH-_iWt-6vW"
+              onChange={(token) => setRecaptchaToken(token)}
+              className="mb-1"
+            />
+          </div>
           <button
             type="submit"
             // className="w-full bg-White text-Blue font-Poppins text-2xl font-SemiBold py-3 rounded-lg hover:bg-teal-700 transition duration-300 laptop1:w-1/2"
-            className="w-full laptop1:w-1/2 text-center bg-White cursor-pointer text-Blue font-Poppins text-lg tablet:mt-10 tablet:text-xl laptop2:text-2xl font-Bold py-4 px-6 mb-8 rounded-lg shadow-DarkBlue shadow-lg  hover:scale-110 transition-transform duration-1000 ease-in-out"
+            className="w-full laptop1:w-1/2 text-center bg-White cursor-pointer text-Blue font-Poppins text-lg tablet:mt-6 tablet:text-xl laptop2:text-2xl font-Bold py-4 px-6 mb-8 rounded-lg shadow-DarkBlue shadow-lg  hover:scale-110 transition-transform duration-1000 ease-in-out"
 
             disabled={isSubmitting}
           >

@@ -131,7 +131,9 @@
         "home_form_inscription_date1": "2 al 6 de Diciembre 2024",
         "home_form_inscription_comments": "Comentarios",
         "home_form_inscription_send": "Enviar",
-        "home_form_inscription_sending": "Enviando"
+        "home_form_inscription_sending": "Enviando",
+        "home_form_contacto_success_title": "Tu mensaje se envío exitosamente!",
+        "home_form_contacto_success_message": "Gracias por contactarnos. A la brevedad nos pondremos en contacto."
     },
     "patients": {
         "patients_hero_title1": "Recupera tu ",
